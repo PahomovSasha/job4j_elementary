@@ -11,7 +11,7 @@ public class Matches {
             System.out.println("Ваш ход, возьмите от 1 до 3-х спичек со стола");
             System.out.println("Сколько спичек вы взяли?");
             int matchesOfPlayer = input.nextInt();
-            if (!Number1to3(matchesOfPlayer)){
+            if (!numberOneToThree(matchesOfPlayer)) {
                 System.out.println("Вы взяли неверное количество спичек, повторите ход ещё раз");
                 System.out.println();
                 continue;
@@ -25,7 +25,7 @@ public class Matches {
         System.out.println("Вы выиграли");
     }
 
-    private static boolean Number1to3(int number) {
+    private static boolean numberOneToThree(int number) {
         return number >= 1 && number <= 3;
     }
 }

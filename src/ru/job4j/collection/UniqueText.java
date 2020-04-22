@@ -10,7 +10,7 @@ public class UniqueText {
         String[] origin = originText.split(" ");
         String[] text = duplicateText.split(" ");
         HashSet<String> check = new HashSet<>();
-        Collections.addAll(check,origin);
+        Collections.addAll(check, origin);
         for (String s : text) {
             if (!check.contains(s)) {
                 rsl = false;

@@ -19,6 +19,6 @@ public class StringCompare implements Comparator<String> {
         if (leftChar.length == rightChar.length) {
             return 0;
         }
-        return leftChar.length > rightChar.length? 1 : -1;
+        return leftChar.length > rightChar.length ? 1 : -1;
     }
 }
