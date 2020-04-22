@@ -5,9 +5,9 @@ public interface Transport {
 
     /**
      *
-     * @param Passenger - число пассажиров
+     * @param passenger - число пассажиров
      */
-    void Passengers(int Passenger);
+    void passengers(int passenger);
 
     /**
      *
