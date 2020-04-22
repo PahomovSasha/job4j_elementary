@@ -15,12 +15,10 @@ public class BankService {
             System.out.println("Пользователь не найден");
             return;
         }
-        if (users.containsKey(user)) {
-            for (List<Account> accounts : users.values()) {
-                if (!accounts.contains(account)) {
-                    accounts.add(account);
-                    break;
-                }
+        for (List<Account> accounts : users.values()) {
+            if (!accounts.contains(account)) {
+                accounts.add(account);
+                break;
             }
         }
     }
@@ -42,12 +40,10 @@ public class BankService {
         if (user == null) {
             return null;
         }
-        if (users.containsKey(user)) {
-            for (Account account : users.get(user)) {
-                if (account.getRequisite().equals(requisite)) {
-                    accountFind = account;
-                    break;
-                }
+        for (Account account : users.get(user)) {
+            if (account.getRequisite().equals(requisite)) {
+                accountFind = account;
+                break;
             }
         }
         return accountFind;
