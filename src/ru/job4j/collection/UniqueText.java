@@ -6,16 +6,17 @@ import java.util.HashSet;
 
 public class UniqueText {
     public static boolean isEquals(String originText, String duplicateText) {
-        int index = 0;
+        boolean rsl = true;
         String[] origin = originText.split(" ");
         String[] text = duplicateText.split(" ");
         HashSet<String> check = new HashSet<>();
         Collections.addAll(check,origin);
         for (String s : text) {
-            if (check.contains(s)) {
-                index++;
+            if (!check.contains(s)) {
+                rsl = false;
+                break;
             }
         }
-        return index == text.length;
+        return rsl;
     }
 }
