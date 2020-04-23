@@ -15,11 +15,8 @@ public class BankService {
             System.out.println("Пользователь не найден");
             return;
         }
-        for (List<Account> accounts : users.values()) {
-            if (!accounts.contains(account)) {
-                accounts.add(account);
-                break;
-            }
+        if (!users.get(user).contains(account)) {
+            users.get(user).add(account);
         }
     }
 
