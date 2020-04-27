@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class CmpDescSize {
 
     Comparator<String> cmpDescSize = (left, right) -> {
-        System.out.println("compare - " + left.length() + " : " + right.length());
-        return Integer.compare(left.length(), right.length());
+        System.out.println("compare - " + right.length() + " : " + left.length());
+        return Integer.compare(right.length(), left.length());
     };
 }
