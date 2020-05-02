@@ -1,4 +1,4 @@
-package ru.job4j;
+package search;
 
 import org.junit.Test;
 import ru.job4j.search.Person;
