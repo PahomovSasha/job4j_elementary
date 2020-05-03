@@ -10,35 +10,31 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user == null) {
+        Optional<User> user = findByPassport(passport);
+        if (!user.isPresent()) {
             System.out.println("Пользователь не найден");
             return;
         }
-        if (!users.get(user).contains(account)) {
-            users.get(user).add(account);
+        if (!users.get(user.get()).contains(account)) {
+            users.get(user.get()).add(account);
         }
     }
 
-    public User findByPassport(String passport) {
+    public Optional<User> findByPassport(String passport) {
         return users
                 .keySet()
                 .stream()
                 .filter(user -> user.getPassport().equals(passport))
-                .findFirst().orElse(null);
+                .findFirst();
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user == null) {
-            return null;
-        }
-        return users
-                .get(user)
+        Optional<User> user = findByPassport(passport);
+        return user.flatMap(value -> users
+                .get(value)
                 .stream()
                 .filter(account -> account.getRequisite().equals(requisite))
-                .findFirst()
-                .orElse(null);
+                .findFirst()).orElse(null);
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
