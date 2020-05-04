@@ -3,6 +3,7 @@ package ru.job4j.stream;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Students implements Comparable<Students> {
     private String name;
@@ -29,7 +30,7 @@ public class Students implements Comparable<Students> {
     static List<Students> levelOf(List<Students> students, int bound) {
         return students
                 .stream()
-                .filter(Objects::nonNull)
+                .flatMap(Stream::ofNullable)
                 .sorted()
                 .dropWhile(student -> student.getScope() < bound)
                 .collect(Collectors.toList());
