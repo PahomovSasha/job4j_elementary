@@ -23,6 +23,15 @@ public class DepDescCompTest {
                 "K2/SK1",
                 "K2"
         );
+        assertThat(rsl, lessThan(5));
+    }
+
+    @Test
+    public void whenUpDepartmentSK2SK1() {
+        int rsl = new DepDescComp().compare(
+                "K2/SK2",
+                "K2/SK1"
+        );
         assertThat(rsl, lessThan(2));
     }
 

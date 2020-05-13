@@ -7,6 +7,7 @@ public class Departments {
 
     /**
      * Метод разбиения департаментов на подразделения
+     *
      * @param deps - департаменты
      * @return подразделения департаментов
      */
@@ -16,7 +17,7 @@ public class Departments {
             String start = "";
             for (String el : value.split("/")) {
                 tmp.add(start + el);
-                start = tmp.size() == 1 ? el + "/" : start + el + "/";
+                start = start + el + "/";
             }
         }
         return new ArrayList<>(tmp);
@@ -24,6 +25,7 @@ public class Departments {
 
     /**
      * Метод сортировки подразделений по возрастанию
+     *
      * @param orgs - подразделения
      * @return отсортированные по возрастанию подразделения
      */
@@ -33,6 +35,7 @@ public class Departments {
 
     /**
      * Метод сортировки подразделений по убыванию
+     *
      * @param orgs - подразделения
      * @return отсортированные по убыванию подразделения
      */
@@ -43,7 +46,7 @@ public class Departments {
                     String one = o1.contains("/") ? o1.substring(0, o1.indexOf("/")) : o1;
                     String two = o2.contains("/") ? o2.substring(0, o2.indexOf("/")) : o2;
                     if (one.equals(two)) {
-                        return Integer.compare(o1.length(), o2.length());
+                        return o1.compareTo(o2);
                     }
                     return o2.compareTo(o1);
                 })
