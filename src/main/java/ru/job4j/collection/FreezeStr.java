@@ -1,6 +1,7 @@
 package ru.job4j.collection;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FreezeStr {
     /**
@@ -14,17 +15,15 @@ public class FreezeStr {
         if (left.length() != right.length()) {
             return false;
         }
-        boolean rsl = true;
-        char[] original = left.toCharArray();
-        char[] changed = right.toCharArray();
-        Arrays.sort(original);
-        Arrays.sort(changed);
-        for (int i = 0; i < original.length; i++) {
-            if (original[i] != changed[i]) {
-                rsl = false;
-                break;
-            }
+        ArrayList<Character> original = left.chars()
+                .mapToObj(e -> (char) e)
+                .collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<Character> changed = right.chars()
+                .mapToObj(e -> (char) e)
+                .collect(Collectors.toCollection(ArrayList::new));
+        for (Character character : original) {
+            changed.remove(character);
         }
-        return rsl;
+        return changed.size() == 0;
     }
 }
